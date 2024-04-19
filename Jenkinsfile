@@ -74,16 +74,16 @@ pipeline {
               }
             steps {
 
-                
+                echo "${DOCKER_IMAGE}:${DOCKER_TAG}";
                 // This step should not normally be used in your script. Consult the inline help for details.
-                withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
-                        // some block
-                        sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
-                        sh 'docker push ${DOCKER_IMAGE}:${DOCKER_TAG}'
-                        sh 'docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}'
+                // withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                //         // some block
+                //         sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
+                //         sh 'docker push ${DOCKER_IMAGE}:${DOCKER_TAG}'
+                //         sh 'docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}'
                 
                     
-                }
+                // }
             }
         }
     }
