@@ -60,6 +60,7 @@ pipeline {
         {
             steps {
                     git 'https://github.com/huynhtrancntt/angular-app-15.2.git'
+                    echo "123"
             }
         }
     }
