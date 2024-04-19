@@ -56,7 +56,7 @@
 pipeline {
     agent any
     stages {
-        stages('Clone')
+        stage('Clone')
         {
             steps {
                     git 'https://github.com/huynhtrancntt/angular-app-15.2.git'
