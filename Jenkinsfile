@@ -75,6 +75,7 @@ pipeline {
             steps {
 
                 echo "${DOCKER_IMAGE}:${DOCKER_TAG}";
+                sh 'install docker'
                 sh 'docker --version'
                 // This step should not normally be used in your script. Consult the inline help for details.
         // // This step should not normally be used in your script. Consult the inline help for details.
