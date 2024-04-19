@@ -55,12 +55,35 @@
 // }
 pipeline {
     agent any
+
+    environment {
+        DOCKER_IMAGE = "huynhtrancntt/angular15.2"
+    }
+
     stages {
         stage('Clone')
         {
             steps {
                     git 'https://github.com/huynhtrancntt/angular-app-15.2.git'
-                    echo "123"
+            }
+        }
+        stage('docker-build')
+        {
+            environment {
+                DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
+              }
+            steps {
+
+                
+                // This step should not normally be used in your script. Consult the inline help for details.
+                withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                        // some block
+                        sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
+                        sh 'docker push ${DOCKER_IMAGE}:${DOCKER_TAG}'
+                        sh 'docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}'
+                
+                    
+                }
             }
         }
     }
