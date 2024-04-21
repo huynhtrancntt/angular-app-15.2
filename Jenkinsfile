@@ -76,6 +76,12 @@ pipeline {
 
                 echo "${DOCKER_IMAGE}:${DOCKER_TAG}";
                 sh 'docker --version'
+
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
+                    ///sh "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
+                    // sh "docker push ${DOCKER_IMAGE}:latest"
+                }
                 // This step should not normally be used in your script. Consult the inline help for details.
             // // This step should not normally be used in your script. Consult the inline help for details.
             //     withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
