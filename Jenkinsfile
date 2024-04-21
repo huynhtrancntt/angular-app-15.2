@@ -83,7 +83,7 @@ pipeline {
         //     }
                 // This step should not normally be used in your script. Consult the inline help for details.
                 // This step should not normally be used in your script. Consult the inline help for details.
-                withDockerRegistry(credentialsId: 'docker-hub-1', url: ' https://index.docker.io/v1/') {
+                withDockerRegistry(credentialsId: 'docker-hub', url: ' https://index.docker.io/v1/') {
                     // some block
                     sh 'echo $DOCKER_PASSWORD | docker login --username huynhtrancntt --password-stdin'
                     sh 'docker --version'
