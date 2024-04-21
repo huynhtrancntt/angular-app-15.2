@@ -85,7 +85,8 @@ pipeline {
                 // This step should not normally be used in your script. Consult the inline help for details.
                 withDockerRegistry(credentialsId: 'docker-hub-1', url: ' https://index.docker.io/v1/') {
                     // some block
-                    sh 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
+                    sh 'echo $DOCKER_PASSWORD | docker login --username huynhtrancntt --password-stdin'
+                    sh 'docker --version'
                     sh 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
                         sh 'docker push ${DOCKER_IMAGE}:${DOCKER_TAG}'
                         sh 'docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}'
