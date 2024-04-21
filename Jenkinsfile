@@ -54,8 +54,9 @@
 //   }
 // }
 pipeline {
-    
+
     agent any
+    
 
     environment {
         DOCKER_IMAGE = "huynhtrancntt/angular15.2"
