@@ -60,6 +60,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "huynhtrancntt/angular15.2"
+        
     }
 
     stages {
@@ -68,7 +69,7 @@ pipeline {
             steps {
                     git 'https://github.com/huynhtrancntt/angular-app-15.2.git'
             }
-            
+
         }
         stage('docker-build')
         {
